@@ -1,17 +1,27 @@
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Input from './components/Input'
 import Tabs from './components/Tabs'
 import Tasks from './components/Tasks'
 import Completed from './components/Completed'
 import Pending from './components/Pending'
+import { useEffect } from 'react'
+
 function App() {
 
   const todos = useSelector(state => state.todos)
   const tab = useSelector(state => state.tab)
-
+  
   const completedTasks = todos.filter(todo => todo && todo.completed == true)
   const pendingTasks = todos.filter(todo => todo.completed == false)
+  
+  useEffect(()=>
+  {
+    
+    localStorage.setItem('todos', JSON.stringify([...todos]))
+
+  },[todos])
+  
   
   return (
     <>

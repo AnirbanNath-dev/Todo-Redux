@@ -1,11 +1,17 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
+
+const todos = JSON.parse(localStorage.getItem('todos'))
+
+
 const initialState = {
-    todos: [],
+    todos: todos && todos.length > 0 ? todos : [],
 
     tab: 'tasks'
 
 }
+
+
 
 export const todoSlice = createSlice({
 
@@ -20,6 +26,8 @@ export const todoSlice = createSlice({
             }
 
             state.todos.push(todo)
+     
+            
 
         },
         removeTodo: (state, actions) => {
