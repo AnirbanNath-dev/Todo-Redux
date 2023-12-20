@@ -1,9 +1,9 @@
-import { createSlice , nanoid} from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    todos : [],
+    todos: [],
 
-    tab : 'tasks'
+    tab: 'tasks'
 
 }
 
@@ -12,46 +12,44 @@ export const todoSlice = createSlice({
     name: 'todo',
     initialState,
     reducers: {
-        addTodo : (state , actions) => {
+        addTodo: (state, actions) => {
             const todo = {
-                id : nanoid(),
+                id: nanoid(),
                 todo: actions.payload,
-                completed : false
+                completed: false
             }
 
             state.todos.push(todo)
-            
+
         },
-        removeTodo : (state , actions) => {
+        removeTodo: (state, actions) => {
 
             state.todos = state.todos.filter(todo => todo.id !== actions.payload)
 
         },
 
-        updateTodo : (state , actions) => {
-            
-            
+        updateTodo: (state, actions) => {
+
+
 
         },
-        completedTodo : (state , actions) => {
+        completedTodo: (state, actions) => {
 
-            state.todos = state.todos.map(todo => {
+            const { id } = actions.payload;
 
-                if(todo.id == actions.payload.id){
-
-                    return {
-                        id : todo.id,
-                        todo : todo.todo,
-                        completed : actions.payload.completed
-                    }
-
+            
+            const todo = state.todos.find(todo => todo.id === id);
+            if (todo) {
+                if(todo.completed){
+                    todo.completed = false
+                }else{
+                    todo.completed = true
                 }
-            
-            })
-             
+            } 
+
         },
 
-        tabChange : (state , actions) => {
+        tabChange: (state, actions) => {
 
             state.tab = actions.payload
 
@@ -60,6 +58,6 @@ export const todoSlice = createSlice({
     }
 })
 
-export const {addTodo , removeTodo , updateTodo , tabChange , completedTodo} = todoSlice.actions
+export const { addTodo, removeTodo, updateTodo, tabChange, completedTodo } = todoSlice.actions
 
 export default todoSlice.reducer

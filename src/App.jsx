@@ -9,9 +9,10 @@ function App() {
 
   const todos = useSelector(state => state.todos)
   const tab = useSelector(state => state.tab)
-  const completedTasks = todos.filter(todo => todo.completed == true)
-  const pendingTasks = todos.filter(todo => todo.completed == false)
 
+  const completedTasks = todos.filter(todo => todo && todo.completed == true)
+  const pendingTasks = todos.filter(todo => todo.completed == false)
+  
   return (
     <>
 

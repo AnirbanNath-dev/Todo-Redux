@@ -16,27 +16,18 @@ function Tasks({completed , todo , id}) {
     dispatch(removeTodo(id))
   }
 
-  const doneFn = ()=>{
+  const doneUndoneFn = ()=>{
 
-    dispatch(completedTodo({
-      id: id,
-      completed : true
-    }))
+    dispatch(completedTodo({id : id}))
 
   }
 
-  const undoneFn = ()=>{
-
-    dispatch(completedTodo({
-      id: id,
-      completed : false
-    }))
-  }
+  
 
   return (
     <div className={`w-[35vw] border-[1px] border-black hover:scale-110 transition-all duration-500 cursor-pointer rounded-xl flex items-center text-lg tracking-wide justify-between px-5 py-2 gap-2 ${completed ? 'bg-green-500 line-through' : 'bg-transparent'}`}>
       {
-        completed ? <TiTick onClick={undoneFn}/> : <TiTickOutline onClick={doneFn}/>
+        completed ? <TiTick onClick={doneUndoneFn}/> : <TiTickOutline onClick={doneUndoneFn}/>
       }
       <input 
       type="text" 
