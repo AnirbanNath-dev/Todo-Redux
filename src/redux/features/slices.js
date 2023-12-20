@@ -6,9 +6,7 @@ const todos = JSON.parse(localStorage.getItem('todos'))
 
 const initialState = {
     todos: todos && todos.length > 0 ? todos : [],
-
     tab: 'tasks'
-
 }
 
 

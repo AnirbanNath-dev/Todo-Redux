@@ -1,5 +1,5 @@
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Input from './components/Input'
 import Tabs from './components/Tabs'
 import Tasks from './components/Tasks'
