@@ -25,10 +25,9 @@ function Tasks({completed , todo , id}) {
   }
 
   const editFn = ()=>{
- 
     
       setIsReadOnly(prev => !prev)
-
+    
   }
 
 

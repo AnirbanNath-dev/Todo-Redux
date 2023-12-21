@@ -42,9 +42,9 @@ export const todoSlice = createSlice({
         completedTodo: (state, actions) => {
 
             const { id } = actions.payload;
-
             
             const todo = state.todos.find(todo => todo.id === id);
+            
             if (todo) {
                 if(todo.completed){
                     todo.completed = false

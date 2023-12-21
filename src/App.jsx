@@ -43,7 +43,7 @@ function App() {
             {
               tab == 'tasks' &&
               (todos.map((todo , index) => (
-                <Tasks key={index} todo={todo.todo} complted={todo.completed} id={todo.id}/>
+                <Tasks key={index} todo={todo.todo} completed={todo.completed} id={todo.id}/>
               )))
             }
             {
