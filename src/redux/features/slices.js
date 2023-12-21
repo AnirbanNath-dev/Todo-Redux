@@ -36,6 +36,11 @@ export const todoSlice = createSlice({
 
         updateTodo: (state, actions) => {
 
+            const { todo , id} = actions.payload
+            const task = state.todos.find(todo => todo.id === id);
+            
+
+            task.todo = todo
 
 
         },

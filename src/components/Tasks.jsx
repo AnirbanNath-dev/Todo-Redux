@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
 import { TiTick } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
-import { completedTodo , removeTodo } from '../redux/features/slices';
+import { completedTodo , removeTodo, updateTodo } from '../redux/features/slices';
 
 
 function Tasks({completed , todo , id}) {
@@ -25,7 +25,7 @@ function Tasks({completed , todo , id}) {
   }
 
   const editFn = ()=>{
-    
+      dispatch(updateTodo({id : id , todo : changedTask}))
       setIsReadOnly(prev => !prev)
     
   }
